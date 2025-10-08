@@ -1,37 +1,25 @@
-const removeSel = (selector) => {
-    const ele = document.querySelector(selector)
-    if (ele) {
-        console.log(`Removing element: ${selector}`)
-        ele.style.display = 'none'
-    } else {
-        console.log(`Element not found for selector: ${selector}`)
-    }
-}
+console.log('这是一个自定义脚本内容1')
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM fully loaded and parsed')
-    const observer = new MutationObserver(() => {
-        removeSel('.title-wrap')
-        removeSel('.rule-btn-wrap')
-        removeSel('.gd-desc')
-        removeSel('.myapp')
-        removeSel('body > uni-app > uni-page > uni-page-wrapper > uni-page-body > uni-view > uni-view.page-wrap-bd > uni-view:nth-child(4)')
-        removeSel('body > uni-app > uni-page > uni-page-wrapper > uni-page-body > uni-view > uni-view.home-page > uni-view.home-body > uni-view.cate-wrap > uni-view:nth-child(4)')
-        removeSel('body > uni-app > uni-page > uni-page-wrapper > uni-page-body > uni-view > uni-view.home-page > uni-view.home-body > uni-view.cate-wrap > uni-view:nth-child(5)')
-        removeSel('body > uni-app > uni-page > uni-page-wrapper > uni-page-body > uni-view > uni-view.home-page > uni-view.home-body > uni-view.cate-wrap > uni-view:nth-child(6)')
-        if(document.querySelector(".coupon")){
-            document.querySelector(".coupon").style.height = "100vh"
-        }
-        if(document.querySelector(".page-wrap")){
-            document.querySelector(".page-wrap").style.height = "100vh"
-        }
+// 当页面加载完成时，在页面右上角显示一个悬浮框
+window.addEventListener('DOMContentLoaded', () => {
+    const floatingBox = document.createElement('div')
+    floatingBox.style.position = 'fixed'
+    floatingBox.style.top = '10px'
+    floatingBox.style.right = '10px'
+    floatingBox.style.width = '200px'
+    floatingBox.style.height = '200px'
+    floatingBox.style.backgroundColor = 'red'
+    floatingBox.innerText = '这是一个悬浮框'
+    floatingBox.style.color = 'white'
+    floatingBox.style.textAlign = 'center'
+    floatingBox.style.lineHeight = '200px'
+    floatingBox.style.fontSize = '20px'
+    floatingBox.style.fontWeight = 'bold'
+    floatingBox.style.borderRadius = '10px'
+    floatingBox.style.boxShadow = '0 0 10px 0 rgba(0, 0, 0, 0.5)'
+    floatingBox.style.cursor = 'pointer'
+    floatingBox.addEventListener('click', () => {
+        alert('这是一个悬浮框')
     })
-
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true,
-    })
-    // Example: Remove elements with class 'ad-banner' and id 'popup'
-    removeSel('body > uni-app > uni-tabbar > div.uni-tabbar > div:nth-child(3)')
-    removeSel('body > uni-app > uni-tabbar > div.uni-tabbar > div:nth-child(4)')
+    document.body.appendChild(floatingBox)
 })
